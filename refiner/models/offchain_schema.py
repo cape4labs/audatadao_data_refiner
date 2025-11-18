@@ -6,5 +6,4 @@ class OffChainSchema(BaseModel):
     version: str
     description: str
     dialect: str
-    # Call it data_schema in order not to override anything
-    data_schema: str = Field(alias="schema")
+    schema: str
