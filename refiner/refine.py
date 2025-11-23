@@ -21,13 +21,14 @@ class Refiner:
         # Iterate through files and transform data
         for input_filename in os.listdir(settings.INPUT_DIR):
             input_file = os.path.join(settings.INPUT_DIR, input_filename)
-            if input_filename == "data.json":
-                json_file = input_file
-            elif input_filename == "data.ogg":
+            ext = os.path.splitext(input_file)[1].lower()
+            if ext == ".ogg":
                 ogg_file = input_file
+            elif ext == ".json":
+                json_file = input_file
 
         if not json_file or not ogg_file:
-            raise FileNotFoundError("Json or ogg are missing")
+            raise FileNotFoundError("Json or ogg are missing", os.listdir(settings.INPUT_DIR))
 
         with open(json_file, "r") as f, open(ogg_file, "rb") as f2:
             input_data = json.load(f)
