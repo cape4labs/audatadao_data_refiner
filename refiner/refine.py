@@ -28,7 +28,9 @@ class Refiner:
                 json_file = input_file
 
         if not json_file or not ogg_file:
-            raise FileNotFoundError("Json or ogg are missing", os.listdir(settings.INPUT_DIR))
+            raise FileNotFoundError(
+                "Json or ogg are missing", os.listdir(settings.INPUT_DIR)
+            )
 
         with open(json_file, "r") as f, open(ogg_file, "rb") as f2:
             input_data = json.load(f)
@@ -61,7 +63,6 @@ class Refiner:
             )
             ipfs_hash = upload_file_to_ipfs(encrypted_path)
             output.refinement_url = f"{settings.PINATA_GATEWAY}/{ipfs_hash}"
-
 
         logging.info("Data transformation completed successfully")
         return output
