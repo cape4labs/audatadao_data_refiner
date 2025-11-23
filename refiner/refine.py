@@ -21,11 +21,10 @@ class Refiner:
         # Iterate through files and transform data
         for input_filename in os.listdir(settings.INPUT_DIR):
             input_file = os.path.join(settings.INPUT_DIR, input_filename)
-            ext = os.path.splitext(input_file)[1].lower()
-            if ext == ".ogg":
-                ogg_file = input_file
-            elif ext == ".json" and input_file != "decrypted_file.json":
+            if input_filename == "data.json":
                 json_file = input_file
+            elif input_filename == "audio.ogg":
+                ogg_file = input_file
 
         if not json_file or not ogg_file:
             raise FileNotFoundError(
