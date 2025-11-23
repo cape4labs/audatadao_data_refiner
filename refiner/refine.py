@@ -23,7 +23,7 @@ class Refiner:
             input_file = os.path.join(settings.INPUT_DIR, input_filename)
             if input_filename == "data.json":
                 json_file = input_file
-            elif input_filename == "audio.ogg":
+            elif input_filename == "data.ogg":
                 ogg_file = input_file
 
         if not json_file or not ogg_file:
@@ -45,7 +45,7 @@ class Refiner:
                 dialect=settings.SCHEMA_DIALECT,
                 schema=transformer.get_schema(),
             )
-            output.data_schema = schema
+            output.schema = schema
 
             schema_file = os.path.join(settings.OUTPUT_DIR, "schema.json")
             with open(schema_file, "w") as f:
