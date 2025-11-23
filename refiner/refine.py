@@ -24,7 +24,7 @@ class Refiner:
             ext = os.path.splitext(input_file)[1].lower()
             if ext == ".ogg":
                 ogg_file = input_file
-            elif ext == ".json":
+            elif ext == ".json" and input_file != "decrypted_file.json":
                 json_file = input_file
 
         if not json_file or not ogg_file:
